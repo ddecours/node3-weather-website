@@ -10,7 +10,8 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Unable to find weather for this location', undefined);
         } else {
-            const message = body.daily.data[0].summary + '  It is currently ' + body.currently.temperature + ' degrees outside.  There is ' + body.currently.precipProbability + '% chance of rain today.';
+            let message = body.daily.data[0].summary + '  It is currently ' + body.currently.temperature + ' degrees outside.  There is ' + body.currently.precipProbability + '% chance of rain today. ';
+            message += 'The high for today is expected to be ' + body.daily.data[0].temperatureHigh + ', with an expected low of ' + body.daily.data[0].temperatureLow;
             callback(undefined, message);
         }
     });
